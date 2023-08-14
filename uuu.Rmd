@@ -1,0 +1,39 @@
+---
+title: "繪製圖表器介紹"
+author: "董宸賓"
+date: "2023-08-08"
+output:  html_document
+---
+
+## 如何使用這個程式 {style="color:#004AAD;"}
+
+### 第一步：上傳你的csv檔，並檢查你的檔案
+
+### 第二步：選擇你的圖表樣式
+
+### 第三步：調整你要輸出的表格大小
+
+### 第四步：下載你的圖表
+
+## 這個程式的code {style="color:green;"}
+
+<https://bookdown.org/yihui/rmarkdown/compile.html>
+
+```{r echo=FALSE, message=FALSE}
+library(DT)
+library(readr)
+表1 <- read_csv("表1.csv")
+datatable(表1)
+```
+
+```{r aa, echo=FALSE, fig.show='hide', message=FALSE, warning=FALSE}
+library(echarts4r)
+library(tidyverse)
+library(readr)
+表1 <- read_csv("表1.csv")
+表3<-表1%>%gather(同學A,同學B,同學C,key=學生,value=分數)
+
+plot1<-表3%>%group_by(學生)%>%e_charts(x=學期)%>%e_line(分數,lineStyle=list(width=4))%>%e_tooltip()%>%e_animation("axis")
+
+plot1%>%e_grid(right="15%")%>%e_legend(orient="vertical",right="15",top="15%",selector=list(list(type="inverse",title="重置"),list(type="all",title="全選")),width=150)  
+```
