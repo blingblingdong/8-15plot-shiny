@@ -1,29 +1,3 @@
-install.packages(shiny)
-install.packages(tidyverse)
-install.packages(ggforce)
-install.packages(shiny)
-install.packages(tidyverse)
-install.packages(shinythemes)
-install.packages(shinyjs)
-install.packages(ggdark)
-install.packages(ggthemes)
-install.packages(shinydashboard)
-install.packages(DT)
-linstall.packages(markdown)
-
-library(shiny)
-library(tidyverse)
-library(ggforce)
-library(shiny)
-library(tidyverse)
-library(ggforce)
-library(shinythemes)
-library(shinyjs)
-library(ggdark)
-library(ggthemes)
-library(shinydashboard)
-library(DT)
-library(markdown)
 
 a = "#004AAD"
 b = "#C0C1C5"
@@ -45,7 +19,7 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "介紹1",
-              div(includeHTML("uuu.html"))),
+              div(HTML(readLines("uuu.html")))),
       tabItem(tabName = "inputData",
               box(
                 title="上傳csv檔案",width =4,
